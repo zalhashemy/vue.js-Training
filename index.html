@@ -1,12 +1,11 @@
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 
 <div id="app">
-  <input type="text" v-model="searchQuery">
+  <p>{{ counter }}</p>
+  <p>{{ fullName }}</p>
+  <p>{{ fullName }}</p>
   
-  <p v-if="isSearching">Searching...</p>
-  <div v-else>
-    <ol>
-      <li v-for="result in results">{{ result }}</li>
-    </ol>
-  </div>
+  <button v-on:click="counter++">Increase Counter</button>
+  <button v-on:click="changeName">Change Name</button>
+  <button v-on:click="changeNameSetter">Change Name (setter)</button>
 </div>

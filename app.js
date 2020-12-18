@@ -1,19 +1,31 @@
 new Vue({
 	el: '#app',
   data: {
-    searchQuery: '',
-    results: [],
-    isSearching: false
+    counter: 1,
+    firstName: 'Bo',
+    lastName: 'Andersen'
   },
-  watch: {
-  	searchQuery: function(query) {
-      this.isSearching = true;
-      var vm = this;
-      
-      setTimeout(function() {
-      	vm.results = ['JavaScript', 'PHP', 'MySQL'];
-				vm.isSearching = false;
-      }, 500);
+  methods: {
+  	changeName: function() {
+    	this.firstName = 'Mark';
+      this.lastName = 'Gonzales';
+    },
+    changeNameSetter: function() {
+    	this.fullName = 'Mark Gonzales';
+    }
+  },
+  computed: {
+  	fullName: {
+    	get: function() {
+      	alert("Assembling full name...");
+    		return this.firstName + ' ' + this.lastName;
+      },
+      set: function(newValue) {
+      	alert("Setting new name: " + newValue);
+        var parts = newValue.split(' ');
+	      this.firstName = parts[0];
+  	    this.lastName = parts[parts.length - 1];
+      }
     }
   }
 });
